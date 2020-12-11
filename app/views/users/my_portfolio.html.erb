@@ -1,0 +1,27 @@
+<h1 class="mt-4">My Portfolio</h1>
+
+<div id="stocks-search">
+	<h2>Search Stocks</h2>
+	<%= form_tag stocks_search_path, remote: true, method: :get do %>
+		<div class="form-group row">
+			<div class="col-sm-9 remove-pad-right">
+				<%= text_field_tag :stock, params[:stock],
+									placeholder: "Search for a ticker...", 
+									class: "form-control form-control-lg" %>
+			</div>
+			<div class="col-sm-3 remove-pad-left">
+				<%= button_tag type: :submit, class: "btn btn-primary" do %>
+					<%= fa_icon 'search 2x' %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<div id="results">
+
+</div>
+
+<% if !@tracked_stocks.empty? %>
+	<%= render 'stocks/list' %>
+<% end %>

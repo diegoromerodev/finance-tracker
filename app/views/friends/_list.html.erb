@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-9">
+		<table class="table table-bordered table-hover shadow">
+		  <thead>
+		    <tr>
+		      <th scope="col">Stocks</th>
+		      <th scope="col">Full name</th>
+		      <th scope="col">Email</th>
+		      <th scope="col">Actions</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% @tracked_users.each do |friend| %>
+			    <tr>
+					<th scope="row"><%= friend.stocks.count %></th>
+					<td><%= friend.full_name %></td>
+					<td><%= friend.email %></td>
+					<td><%=link_to "Stop following", friendship_path(friend), class: "btn btn-warning btn-sm", method: :delete %>
+					<%=link_to "View profile", user_path(friend), class: "btn btn-warning btn-sm" %></td>
+			    </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+	</div>
+</div>

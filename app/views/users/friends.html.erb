@@ -1,0 +1,27 @@
+<h1 class="mt-4">My Friends</h1>
+
+<div id="stocks-search">
+	<h2>Search Users</h2>
+	<%= form_tag search_friends_path, remote: true, method: :get do %>
+		<div class="form-group row">
+			<div class="col-sm-9 remove-pad-right">
+				<%= text_field_tag :friend, params[:friend],
+									placeholder: "Find a new friend...", 
+									class: "form-control form-control-lg" %>
+			</div>
+			<div class="col-sm-3 remove-pad-left">
+				<%= button_tag type: :submit, class: "btn btn-primary" do %>
+					<%= fa_icon 'search 2x' %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>
+
+<div id="friends_result">
+
+</div>
+
+<% if !@tracked_users.empty? %>
+	<%= render 'friends/list' %>
+<% end %>
